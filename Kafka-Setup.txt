@@ -1,0 +1,10 @@
+C:\NamSan\Assesment\kafka_2.12-2.7.0\bin\windows>zookeeper-server-start.bat C:\NamSan\Assesment\kafka_2.12-2.7.0\config\zookeeper.properties
+C:\NamSan\Assesment\kafka_2.12-2.7.0\bin\windows>kafka-server-start.bat C:\NamSan\Assesment\kafka_2.12-2.7.0\config\server.properties
+Create Kafkafka-topics: kafka-topics.bat -zookeeper localhost:2181 -topic gbgs --create --partitions 3 --replication-factor 1
+To list the number of topics created: kafka-topics.bat -zookeeper localhost:2181 -list
+To describe a topic: kafka-topics.bat -zookeeper localhost:2181 -describe --topic gbgs
+Connect to Producer: 
+kafka-console-producer --broker-list localhost:9092 --topic gbgs
+kafka-console-producer --broker-list localhost:9092 --topic gbgs --property parse.key=true --property key.separator=,  
+> key,value  
+> another key,another value'  

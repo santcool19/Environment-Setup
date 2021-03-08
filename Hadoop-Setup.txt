@@ -1,0 +1,91 @@
+HADOOP_COMMON_HOME C:\NamSan\Assesment\BigData\Hadoop
+HADOOP_COMMON_LIB_NATIVE_DIR  C:\NamSan\Assesment\BigData\Hadoop\lib\native
+HADOOP_CONF  C:\NamSan\Assesment\BigData\Hadoop\etc\hadoop
+HADOOP_HDFS_HOME C:\NamSan\Assesment\BigData\Hadoop
+HADOOP_HOME C:\NamSan\Assesment\BigData\Hadoop
+HADOOP_MAPRED_HOME C:\NamSan\Assesment\BigData\Hadoop
+YARN_HOME C:\NamSan\Assesment\BigData\Hadoop
+HADOOP_OPTS 
+
+History server: http://DESKTOP-9C0389F:18080
+Spark UI: http://desktop-9c0389f:4040/jobs/
+
+Spark:
+cd C:\NamSan\Assesment\GBGS-Environment-Setup\spark\bin
+Start History server: spark-class.cmd org.apache.spark.deploy.history.HistoryServer
+
+HADOOP Command::
+1. C:\NamSan\Assesment\BigData\Hadoop\bin>hadoop version
+2. C:\NamSan\Assesment\BigData\Hadoop\bin>hdfs namenode -format
+3. C:\Users\santc>cd C:\NamSan\Assesment\BigData\Hadoop\sbin
+4. C:\NamSan\Assesment\BigData\hadoop-3.1.0\sbin>start-dfs.cmd
+5. C:\NamSan\Assesment\BigData\hadoop-3.1.0\sbin>start-yarn.cmd
+6. starting yarn daemons
+
+HDFS Command:
+1. Create a directory in HDFS, where to kept text file: $ hdfs dfs -mkdir /test
+2. Upload the data.txt file on HDFS in the specific directory: $ hdfs dfs -put /home/codegyani/data.txt /test
+3. Run Java code: $ hadoop jar home/codegyani/data.jar /test/data.txt /text/DataOutFolder
+4. hadoop fs -ls /home/codegyani/
+5. hadoop fs -Ddfs.blocksize=33554432 -copyFromLocal /home/codegyani
+6. hadoop fs -stat%o /test/data.txt
+
+Sqoop Command:
+1. Import data from one table of RDBMS to HDFS: sqoop import --connect jdbc:mysql://localhost/employees --username root --table emplloyee --m 3 --where "emp_No>101" --target-dir /test/employee
+2. Import data from all tables RDBMS to HDFS: sqoop import-all-tables --connect jdbc:mysql://localhost/employees --username root --target-dir /test/EmployeeDB
+3. Export data from HDFS to RDBMS:  sqoop export --connect jdbc:mysql://localhost/employees --username root --table emplloyee --export-dir /test/employee
+4. List DB in RDBMS: sqoop list-databases --connect jdbc:mysql://localhost --username root
+5. List Tables in RDBMS: sqoop list-tables --connect jdbc:mysql://localhost/employees --username root
+6. CodeGen: sqoop codegen --connect jdbc:mysql://localhost/employees --username root --table emplloyee
+
+Hive command:
+1. Create database TestDB with DBPROPERTIES('creator'='Sant', 'dateyy'='02-01-2021');
+2. describe database  TestDB;
+3. create table TestTable(
+cell_no int,
+area string,
+city string,
+name string)
+row format delimited fields terminated by ','
+stored as textfile;
+4. LOAD DATA LOCAL INPATH '' INTO TABLE TestTable;
+5. describe extended TestTable;
+6. create external table TestTable(
+cell_no int,
+area string,
+city string,
+name string)
+row format delimited fields terminated by ','
+LOCATION '/test/';
+7. create table TestPartTable(
+cell_no int,
+name string)
+prtitioned by (city string)
+clustered by (area) INTO 10 buckets
+row format delimited fields terminated by ','
+stored as textfile;
+8. set hive.exec.dymanic.partition.mode=nonstrict;
+   set hive.exec.dymanic.partition=true;
+   set hive.enforce.bucketing=true;
+9. from TestTable txn INSERT OVERWRITE TABLE TestPartTable PARTITION(city)
+   SELECT txn.cell_no,txn.area,txn.city,txn.name  DISTRIBUTED BY city;
+
+HBASE Command: hbase shell
+1. create 'TestTable','cf'
+2. put 'TestTable','r1','cf:c1','v1'
+   put 'TestTable','r1','cf:c2','v2'
+3. scan 'TestTable'
+   get 'TestTable', 'r1'
+   get 'TestTable', 'r1',{COLUMN=>'cf:c3'.VERSIONS=>3}
+4. disable 'TestTable'
+   alter 'TestTable' ,{NAME=>'cf_alter'}
+   enable 'TestTable'
+   delete 'TestTable', 'e1', 'cf:c3'
+   disable 'TestTable'
+   drop 'TestTable'  
+
+BigData Tutorial: https://www.youtube.com/watch?v=1vbXmCrkT3Y
+Map Reduce Programm: https://www.guru99.com/create-your-first-hadoop-program.html
+Spark programmong" https://sparkbyexamples.com/
+Spark sample project: https://www.dezyre.com/article/top-5-apache-spark-use-cases/271
+
