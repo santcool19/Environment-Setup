@@ -1,25 +1,16 @@
-HADOOP_COMMON_HOME C:\NamSan\Assesment\BigData\Hadoop
-HADOOP_COMMON_LIB_NATIVE_DIR  C:\NamSan\Assesment\BigData\Hadoop\lib\native
-HADOOP_CONF  C:\NamSan\Assesment\BigData\Hadoop\etc\hadoop
-HADOOP_HDFS_HOME C:\NamSan\Assesment\BigData\Hadoop
-HADOOP_HOME C:\NamSan\Assesment\BigData\Hadoop
-HADOOP_MAPRED_HOME C:\NamSan\Assesment\BigData\Hadoop
-YARN_HOME C:\NamSan\Assesment\BigData\Hadoop
-HADOOP_OPTS 
-
 History server: http://DESKTOP-9C0389F:18080
 Spark UI: http://desktop-9c0389f:4040/jobs/
 
 Spark:
-cd C:\NamSan\Assesment\GBGS-Environment-Setup\spark\bin
+cd C:\NamSan\Assesment\GBGS-ENV\spark-3.0\bin
 Start History server: spark-class.cmd org.apache.spark.deploy.history.HistoryServer
 
 HADOOP Command::
-1. C:\NamSan\Assesment\BigData\Hadoop\bin>hadoop version
-2. C:\NamSan\Assesment\BigData\Hadoop\bin>hdfs namenode -format
-3. C:\Users\santc>cd C:\NamSan\Assesment\BigData\Hadoop\sbin
-4. C:\NamSan\Assesment\BigData\hadoop-3.1.0\sbin>start-dfs.cmd
-5. C:\NamSan\Assesment\BigData\hadoop-3.1.0\sbin>start-yarn.cmd
+1. C:\NamSan\Apps\hadoop-3.2.1\bin>hadoop version
+2. C:\NamSan\Apps\hadoop-3.2.1\bin>hdfs namenode -format
+3. C:\Users\santc>cd C:\NamSan\Apps\hadoop-3.2.1\sbin
+4. C:\NamSan\Apps\hadoop-3.2.1\sbin>start-dfs.cmd
+5. C:\NamSan\Apps\hadoop-3.2.1\sbin>start-yarn.cmd
 6. starting yarn daemons
 
 HDFS Command:
